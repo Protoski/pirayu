@@ -16,3 +16,8 @@ Las skills viven en `.claude/skills/` y Claude Code las carga solas al arrancar 
 
 ## Lint y formato (React/Next.js/TypeScript)
 - Si el proyecto usa React o Next.js, usar los configs de `@vercel/style-guide` (`eslint/react.js`, `eslint/next.js`, `eslint/typescript`, `prettier`). El repo está archivado: fijar la versión y no esperar actualizaciones.
+
+## Portal (Next.js)
+- Contenido editable y datos de ejemplo: solo en `src/content/sitio.ts`. No inventar datos oficiales.
+- Antes de entregar: `npm run lint && npm run typecheck && npm test && npm run build`, luego `npm run test:e2e` y `npm run test:a11y` con el servidor de producción.
+- En este entorno, Playwright puede requerir `CHROMIUM_PATH=/opt/pw-browsers/chromium`.

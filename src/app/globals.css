@@ -1,0 +1,143 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Paleta inspirada en el verde y dorado del escudo de Pirayú,
+ * rojo colorado como acento y fondos cálidos para una lectura serena. */
+:root {
+  --background: #fffdf8;
+  --surface: #f5f3eb;
+  --foreground: #172c25;
+  --muted-foreground: #4c5b53;
+  --border: #dddeda;
+  --primary: #18513b;
+  --primary-foreground: #ffffff;
+  --primary-soft: #eaf1e8;
+  --accent-red: #b32234;
+  --ring: #18513b;
+  --success: #0d5c2e;
+  --warning: #6b4100;
+  --radius: 0.375rem;
+  color-scheme: light;
+}
+
+.dark {
+  --background: #101c18;
+  --surface: #182923;
+  --foreground: #e8edf4;
+  --muted-foreground: #a8b3c4;
+  --border: #31443a;
+  --primary: #a2d2ad;
+  --primary-foreground: #10291d;
+  --primary-soft: #223c2c;
+  --accent-red: #ff6b76;
+  --ring: #a2d2ad;
+  --success: #7ad9a1;
+  --warning: #f2c26b;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-surface: var(--surface);
+  --color-foreground: var(--foreground);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-soft: var(--primary-soft);
+  --color-accent-red: var(--accent-red);
+  --color-ring: var(--ring);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 4px);
+  --font-sans: 'Public Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Source Serif 4 Variable', ui-serif, Georgia, serif;
+  --font-mono: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}
+
+/* Selector de tamaño de fuente (accesibilidad): escala todo el sitio vía rem. */
+html {
+  font-size: 100%;
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+html[data-font-scale='1'] {
+  font-size: 112.5%;
+}
+html[data-font-scale='2'] {
+  font-size: 125%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+:focus-visible {
+  outline: 3px solid var(--ring);
+  outline-offset: 2px;
+}
+
+* {
+  border-color: var(--border);
+}
+
+/* Leaflet: marcadores propios (divIcon) para no depender de imágenes del paquete. */
+.pin {
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: var(--primary);
+  border: 3px solid #fff;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.35);
+}
+.pin[data-active='true'] {
+  background: #d91023;
+}
+.leaflet-container {
+  font-family: var(--font-sans);
+  background: var(--surface);
+}
+
+/* Identidad municipal: rojo, verde y dorado en proporciones contenidas. */
+.civic-stripe {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #18513b 0%,
+    #18513b 45%,
+    #c6a04e 45%,
+    #c6a04e 60%,
+    #b32234 60%,
+    #b32234 100%
+  );
+}
+.renewal-label {
+  color: #922032;
+  border: 1px solid #d9b6b6;
+  background: #fff0ed;
+}
+.dark .renewal-label {
+  color: #ffb1b8;
+  border-color: #80505a;
+  background: #392128;
+}
