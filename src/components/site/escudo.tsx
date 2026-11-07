@@ -20,6 +20,7 @@ export function Escudo({
         width={size}
         height={size}
         priority
+        className="shrink-0 object-contain"
       />
     );
   }

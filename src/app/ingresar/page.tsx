@@ -16,8 +16,7 @@ export default function Ingresar(): React.JSX.Element {
         <p>
           <strong>Aún no disponible.</strong> El acceso requiere un convenio con
           el Ministerio de Tecnologías de la Información y Comunicación (MITIC).
-          Mientras tanto, puede consultar el estado de cada trámite con su
-          número de expediente desde la{' '}
+          Mientras tanto, puede explorar los recorridos de demostración desde la{' '}
           <a href="/#tramites">Ventanilla Virtual</a>.
         </p>
       </div>

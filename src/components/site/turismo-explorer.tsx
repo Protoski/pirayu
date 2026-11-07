@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { MapPin } from 'lucide-react';
 import { useState } from 'react';
 import { centroMapa, sitiosTuristicos } from '@/content/sitio';
@@ -67,6 +68,24 @@ export function TurismoExplorer(): React.JSX.Element {
             aria-live="polite"
             className="rounded-md border border-border p-4"
           >
+            {sitio.foto ? (
+              <figure className="mb-4">
+                <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
+                  <Image
+                    src={sitio.foto}
+                    alt={`${sitio.ia ? 'Ilustración de IA: ' : ''}${sitio.nombre}`}
+                    fill
+                    sizes="(min-width: 1024px) 60vw, 100vw"
+                    className="object-cover"
+                  />
+                </div>
+                <figcaption className="mt-2 text-xs text-muted-foreground">
+                  {sitio.ia
+                    ? 'Ilustración generada con IA · basada en referencias visuales, no es una fotografía documental.'
+                    : 'Fotografía del portal municipal.'}
+                </figcaption>
+              </figure>
+            ) : null}
             <p className="font-semibold">{sitio.nombre}</p>
             <p className="text-sm text-muted-foreground">{sitio.descripcion}</p>
             {!sitio.coordenadasVerificadas ? (

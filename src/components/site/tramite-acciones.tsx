@@ -8,7 +8,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from '@/components/ui/dialog';
-import type { Tramite } from '@/content/sitio';
+import { modoDemostracion, type Tramite } from '@/content/sitio';
 import {
   AudienciaForm,
   EstadoForm,
@@ -21,6 +21,44 @@ export function TramiteAcciones({
 }: {
   tramite: Tramite;
 }): React.JSX.Element {
+  if (modoDemostracion) {
+    return (
+      <Dialog>
+        <DialogTrigger asChild>
+          <Button>Ver cómo funciona</Button>
+        </DialogTrigger>
+        <DialogContent>
+          <DialogTitle>{tramite.titulo}</DialogTitle>
+          <DialogDescription>
+            Vista de demostración. Este recorrido no registra solicitudes ni
+            genera expedientes oficiales.
+          </DialogDescription>
+          <ol className="my-4 grid list-decimal gap-3 pl-5 text-sm">
+            <li>Consultás los requisitos de tu trámite.</li>
+            <li>
+              El municipio valida la documentación y comunica los pasos a
+              seguir.
+            </li>
+            <li>
+              Con la integración municipal habilitada, podrás seguir el
+              expediente desde este portal.
+            </li>
+          </ol>
+          <p className="text-sm text-muted-foreground">
+            La habilitación requiere procesos, responsables y sistemas aprobados
+            por la Municipalidad. No ingreses datos personales en esta
+            demostración.
+          </p>
+          <a
+            href="tel:+59551920112"
+            className="mt-4 inline-flex min-h-11 items-center justify-center rounded-md bg-primary px-4 font-semibold text-primary-foreground"
+          >
+            Llamar al municipio: 0519 20112
+          </a>
+        </DialogContent>
+      </Dialog>
+    );
+  }
   return (
     <div className="flex w-full flex-wrap items-start gap-2">
       {tramite.acciones.includes('reclamo') ? (

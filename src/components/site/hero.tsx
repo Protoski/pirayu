@@ -5,7 +5,7 @@ import { TramiteSearch } from './tramite-search';
 
 /** 2. Hero: bienvenida de la Administración y buscador rápido de trámites. */
 export function Hero(): React.JSX.Element {
-  const { intendente, bienvenida } = administracion;
+  const { bienvenida } = administracion;
   return (
     <section
       id="inicio"
@@ -14,19 +14,15 @@ export function Hero(): React.JSX.Element {
     >
       <div className="grid gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,1fr)] lg:items-stretch">
         <div className="flex flex-col">
-          <p className="mb-4 flex flex-wrap items-center gap-2 text-sm text-muted-foreground">
-            <span className="font-semibold text-foreground">
-              {institucion.lema}
-            </span>
-            <span aria-hidden>·</span>
-            <span>
-              Administración {intendente.nombre}
-              {intendente.mostrarPartido ? ` (${intendente.partido})` : ''}
-            </span>
+          <p className="renewal-label mb-5 w-fit rounded-full px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.12em]">
+            Pirayú · Paraguarí · Paraguay
+          </p>
+          <p className="mb-3 text-sm font-semibold text-muted-foreground">
+            {institucion.nombre}
           </p>
           <h1
             id="titulo-inicio"
-            className="font-serif text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
+            className="font-serif text-primary text-4xl font-semibold leading-[1.08] tracking-tight sm:text-5xl lg:text-6xl"
           >
             {bienvenida.titulo}
           </h1>
@@ -38,7 +34,21 @@ export function Hero(): React.JSX.Element {
               </p>
             ) : null}
           </div>
-          <div className="mt-8 max-w-xl lg:mt-auto lg:pt-8">
+          <div className="my-6 flex flex-wrap gap-3">
+            <a
+              href="/#tramites"
+              className="inline-flex min-h-12 items-center justify-center rounded-md bg-primary px-5 text-sm font-semibold text-primary-foreground hover:opacity-90"
+            >
+              Explorar trámites
+            </a>
+            <a
+              href="/#contacto"
+              className="inline-flex min-h-12 items-center justify-center rounded-md border border-border px-5 text-sm font-semibold hover:bg-surface"
+            >
+              Contactar al municipio
+            </a>
+          </div>
+          <div className="mt-4 max-w-xl lg:mt-auto lg:pt-4">
             <TramiteSearch />
           </div>
         </div>

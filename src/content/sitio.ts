@@ -16,50 +16,52 @@
 export const PENDIENTE = '[PENDIENTE]';
 
 /** true = muestra un aviso global de "versión de demostración con datos de ejemplo". */
-export const modoDemostracion = true;
+export const modoDemostracion =
+  process.env.NEXT_PUBLIC_MODO_DEMOSTRACION !== 'false';
 
 export const institucion = {
   nombre: 'Municipalidad de Pirayú',
   departamento: 'Departamento de Paraguarí',
   pais: 'República del Paraguay',
-  lema: 'Ventanilla única virtual',
+  lema: 'Renovación para Pirayú',
   /** Ruta a un SVG/PNG del escudo oficial en /public/media. null = se muestra marcador. */
-  escudo: null as string | null,
+  escudo: '/media/oficial/logo.png' as string | null,
   contacto: {
     ejemplo: true,
-    direccion: `${PENDIENTE} Dirección física de la sede municipal`,
-    telefono: `${PENDIENTE} Teléfono oficial`,
-    correo: `${PENDIENTE} correo@dominio-oficial`,
-    horario: `${PENDIENTE} Horario de atención`,
+    direccion: 'Tte. Ramón Gómez entre Gral. Díaz y Juan Pablo II, Pirayú',
+    telefono: '0519-20112 / 0519-20011',
+    correo: 'municipalidaddepirayu@gmail.com',
+    horario: 'Confirmar horario de atención por teléfono antes de acudir',
   },
   /**
    * Información del proveedor exigida para comercio electrónico (Ley N° 4868/2013).
    * Completar con los datos fiscales oficiales de la Municipalidad.
    */
   proveedor: {
-    ejemplo: true,
+    ejemplo: false,
     razonSocial: 'Municipalidad de Pirayú',
-    ruc: `${PENDIENTE} RUC`,
-    domicilio: `${PENDIENTE} Domicilio legal`,
+    ruc: '80000725-5',
+    domicilio: 'Tte. Ramón Gómez entre Gral. Díaz y Juan Pablo II, Pirayú',
   },
 };
 
 export const administracion = {
   intendente: {
-    nombre: 'Félix Cuevas',
+    nombre: 'Félix de Jesús Cuevas Salinas',
     cargo: 'Intendente Municipal',
     /** Dato provisto en la solicitud del proyecto. Ver README: revisión legal sobre neutralidad institucional. */
-    partido: 'ANR',
+    partido: 'Partido Colorado · ANR',
     mostrarPartido: true,
-    periodo: `${PENDIENTE} Período de mandato`,
-    foto: null as string | null,
-    biografia: `${PENDIENTE} Reseña institucional del Intendente (trayectoria, ejes de gestión). Redactar y validar por la Secretaría General.`,
+    periodo: '2026–2031',
+    foto: '/media/ia/felix-cuevas-institucional.webp' as string | null,
+    biografia:
+      'Félix de Jesús Cuevas Salinas fue elegido para la Intendencia de Pirayú en las elecciones municipales del 4 de octubre de 2026. La Administración Municipal atiende a la ciudadanía a través de sus canales institucionales.',
   },
   bienvenida: {
-    ejemplo: true,
-    titulo: 'Bienvenidos al portal de la Municipalidad de Pirayú',
+    ejemplo: false,
+    titulo: 'Renovación para Pirayú',
     texto:
-      'Desde aquí podés realizar trámites, consultar el estado de tus solicitudes y acceder a la información pública del municipio. [Texto de ejemplo: reemplazar por el mensaje oficial de la Administración.]',
+      'Una nueva etapa, cerca de cada vecino. Encontrá información útil, conocé los servicios municipales y descubrí el patrimonio que nos une. Un portal pensado para toda la ciudadanía de Pirayú.',
   },
 };
 
@@ -71,25 +73,16 @@ export interface Persona {
 }
 
 /** Junta Municipal: completar con la integración oficial proclamada por la Justicia Electoral. */
-export const juntaMunicipal: Persona[] = Array.from({ length: 6 }, (_, i) => ({
-  nombre: `${PENDIENTE} Concejal/a ${i + 1}`,
-  cargo: i === 0 ? 'Presidente/a de la Junta Municipal' : 'Concejal/a titular',
-  foto: null,
-  ejemplo: true,
-}));
+export const juntaMunicipal: Persona[] = [];
 
 export const directores: Persona[] = [
-  'Dirección de Administración y Finanzas',
-  'Dirección de Tránsito',
-  'Dirección de Obras Públicas',
-  'Dirección de Cultura y Turismo',
-  'Dirección de Medio Ambiente',
-].map((cargo) => ({
-  nombre: `${PENDIENTE} Nombre del/la director/a`,
-  cargo,
-  foto: null,
-  ejemplo: true,
-}));
+  {
+    nombre: 'Rosalía Rojas',
+    cargo: 'Encargada de la Unidad Operativa de Contratación (registro DNCP)',
+    foto: null,
+    ejemplo: false,
+  },
+];
 
 export type EstadoServicio = 'en_linea' | 'parcial' | 'presencial';
 export type AccionTramite = 'pago' | 'audiencia' | 'reclamo' | 'consulta';
@@ -110,7 +103,7 @@ export const tramites: Tramite[] = [
     id: 'licencia',
     titulo: 'Renovación de Licencia de Conducir',
     resumen:
-      'Iniciá la renovación, agendá el examen y consultá el estado de tu expediente.',
+      'Orientación para renovar tu licencia y consultar los pasos con Tránsito.',
     palabrasClave: [
       'registro',
       'licencia',
@@ -132,7 +125,7 @@ export const tramites: Tramite[] = [
     id: 'inmobiliario',
     titulo: 'Pago de Impuesto Inmobiliario',
     resumen:
-      'Consultá tu liquidación por cuenta corriente catastral y pagá en línea.',
+      'Información para consultar tu liquidación y las formas de pago habilitadas.',
     palabrasClave: [
       'inmobiliario',
       'impuesto',
@@ -174,7 +167,7 @@ export const tramites: Tramite[] = [
     id: 'audiencia',
     titulo: 'Solicitud de Audiencia con el Intendente',
     resumen:
-      'Pedí una reunión indicando el motivo. Secretaría General confirma fecha y hora.',
+      'Conocé el recorrido para solicitar una reunión con la Intendencia.',
     palabrasClave: ['audiencia', 'intendente', 'reunión', 'cita', 'entrevista'],
     estadoServicio: 'en_linea',
     requisitos: [
@@ -360,6 +353,7 @@ export interface SitioTuristico {
   /** false = posición ilustrativa; reemplazar por coordenadas relevadas. */
   coordenadasVerificadas: boolean;
   foto: string | null;
+  ia?: boolean;
 }
 
 export const sitiosTuristicos: SitioTuristico[] = [
@@ -368,55 +362,59 @@ export const sitiosTuristicos: SitioTuristico[] = [
     nombre: 'Estación del Ferrocarril de Pirayú',
     categoria: 'Patrimonio',
     descripcion:
-      'Edificio ferroviario declarado Patrimonio Histórico Nacional. [Ampliar con reseña oficial.]',
+      'Estación ferroviaria restaurada conservando su estructura original y sus dos torres laterales. SENATUR la identifica como estación y museo, vinculada al turismo comunitario de Pirayú.',
     lat: -25.4825,
     lng: -57.0345,
     coordenadasVerificadas: false,
-    foto: null,
+    foto: '/media/oficial/estacion.jpg',
   },
   {
     id: 'iglesia',
     nombre: 'Iglesia Virgen del Rosario',
     categoria: 'Patrimonio',
     descripcion:
-      'Templo de la comunidad. [Ampliar con reseña oficial y horarios de visita.]',
+      'La Iglesia Virgen del Rosario integra los circuitos turísticos de Pirayú difundidos por SENATUR. Consultá las condiciones y horarios de visita con el municipio.',
     lat: -25.4842,
     lng: -57.0318,
     coordenadasVerificadas: false,
-    foto: null,
+    foto: '/media/ia/iglesia.webp',
+    ia: true,
   },
   {
     id: 'nanduti',
     nombre: 'Artesanía en Ñandutí y calzados de cuero',
     categoria: 'Artesanía',
     descripcion:
-      'Talleres de tejido de ñandutí y producción de calzados de cuero. [Agregar talleres con su autorización.]',
+      'El circuito Ñandu Rape invita a conocer la artesanía tradicional de Pirayú. SENATUR también documenta la Escuela de Salvaguarda de los Textiles de la ciudad.',
     lat: -25.4851,
     lng: -57.0355,
     coordenadasVerificadas: false,
-    foto: null,
+    foto: '/media/ia/nanduti.webp',
+    ia: true,
   },
   {
     id: 'cerro-leon',
-    nombre: 'Cerro León y Campamento Azcurra',
+    nombre: 'Museo Campamento Cerro León',
     categoria: 'Historia',
     descripcion:
-      'Sitios vinculados a la Guerra de la Triple Alianza. [Validar ubicación y reseña con historiadores locales.]',
+      'Museo vinculado a la memoria de la Guerra de la Triple Alianza, documentado por la Secretaría Nacional de Cultura. Agencia IP lo ubica a 11 km del centro de Pirayú. La posición del mapa es ilustrativa; confirmá el acceso antes de viajar.',
     lat: -25.47,
     lng: -57.05,
     coordenadasVerificadas: false,
-    foto: null,
+    foto: '/media/ia/cerro.webp',
+    ia: true,
   },
   {
     id: 'gastronomia',
     nombre: 'Gastronomía local',
     categoria: 'Gastronomía',
     descripcion:
-      '[Listar comedores y productores locales con su autorización.]',
+      'La gastronomía integra el turismo comunitario promovido por SENATUR en Pirayú. Consultá con el municipio las propuestas disponibles y los prestadores habilitados.',
     lat: -25.4838,
     lng: -57.033,
     coordenadasVerificadas: false,
-    foto: null,
+    foto: '/media/ia/gastronomia.webp',
+    ia: true,
   },
 ];
 
@@ -427,29 +425,16 @@ export interface Diapositiva {
   src: string | null;
   alt: string;
   motivo: 'tren' | 'nanduti' | 'centro';
+  ia?: boolean;
 }
 
 export const heroDiapositivas: Diapositiva[] = [
   {
     id: 'estacion',
-    titulo: 'Estación del Ferrocarril',
-    src: null,
-    alt: 'Estación del Ferrocarril de Pirayú',
+    titulo: 'Estación del Ferrocarril de Pirayú',
+    src: '/media/oficial/estacion.jpg',
+    alt: 'Estación del Ferrocarril de Pirayú, fotografía del portal municipal',
     motivo: 'tren',
-  },
-  {
-    id: 'nanduti',
-    titulo: 'Telares de Ñandutí',
-    src: null,
-    alt: 'Artesana tejiendo ñandutí',
-    motivo: 'nanduti',
-  },
-  {
-    id: 'centro',
-    titulo: 'Centro histórico',
-    src: null,
-    alt: 'Centro histórico de Pirayú',
-    motivo: 'centro',
   },
 ];
 
@@ -461,23 +446,42 @@ export const galeria: Diapositiva[] = [
   {
     id: 'cuero',
     titulo: 'Calzados de cuero',
-    src: null,
-    alt: 'Taller de calzados de cuero',
+    src: '/media/ia/cuero.webp',
+    alt: 'Ilustración de IA: elaboración artesanal de sandalias de cuero',
     motivo: 'nanduti',
+    ia: true,
   },
   {
     id: 'iglesia',
     titulo: 'Iglesia Virgen del Rosario',
-    src: null,
-    alt: 'Iglesia Virgen del Rosario',
+    src: '/media/ia/iglesia.webp',
+    alt: 'Ilustración de IA basada en referencias de la Iglesia Virgen del Rosario de Pirayú',
     motivo: 'centro',
+    ia: true,
   },
   {
     id: 'cerro',
-    titulo: 'Cerro León',
-    src: null,
-    alt: 'Vista del Cerro León',
+    titulo: 'Museo Campamento Cerro León',
+    src: '/media/ia/cerro.webp',
+    alt: 'Ilustración de IA basada en referencias del Museo Campamento Cerro León',
     motivo: 'tren',
+    ia: true,
+  },
+  {
+    id: 'nanduti',
+    titulo: 'Artesanía en ñandutí',
+    src: '/media/ia/nanduti.webp',
+    alt: 'Ilustración de IA: manos trabajando encaje de ñandutí sobre bastidor',
+    motivo: 'nanduti',
+    ia: true,
+  },
+  {
+    id: 'gastronomia',
+    titulo: 'Sabores de Paraguay',
+    src: '/media/ia/gastronomia.webp',
+    alt: 'Ilustración de IA: chipa y sopa paraguaya sobre una mesa de madera',
+    motivo: 'centro',
+    ia: true,
   },
 ];
 
@@ -485,7 +489,7 @@ export const navegacion = [
   { href: '/#inicio', label: 'Inicio' },
   { href: '/#autoridades', label: 'Autoridades' },
   { href: '/#tramites', label: 'Trámites Virtuales' },
-  { href: '/#transparencia', label: 'Transparencia Ley 5282' },
+  { href: '/#transparencia', label: 'Transparencia' },
   { href: '/#turismo', label: 'Turismo' },
   { href: '/#contacto', label: 'Contacto' },
 ] as const;

@@ -27,7 +27,7 @@ function Retrato({
           alt={alt}
           fill
           sizes="(min-width: 768px) 20vw, 40vw"
-          className="object-cover"
+          className="object-cover object-top"
           loading="lazy"
         />
       </div>
@@ -60,7 +60,7 @@ function FichaPersona({ p }: { p: Persona }): React.JSX.Element {
   );
 }
 
-/** 3. Autoridades: ficha del Intendente, Junta Municipal y Directores de Área. */
+/** 3. Autoridades: ficha del Intendente, Junta Municipal y Unidad de Contratación. */
 export function Autoridades(): React.JSX.Element {
   const { intendente } = administracion;
   return (
@@ -72,21 +72,24 @@ export function Autoridades(): React.JSX.Element {
       <SectionHeading
         id="titulo-autoridades"
         eyebrow="Autoridades"
-        title="Quiénes gobiernan el municipio"
+        title="Información institucional"
       >
-        Ejecutivo municipal, Junta Municipal y responsables de cada dirección.
+        Intendencia Municipal y canales de información institucional.
       </SectionHeading>
 
       <article
-        className="grid gap-6 rounded-md border border-border bg-surface p-4 sm:grid-cols-[12rem_1fr] sm:p-6"
+        className="grid gap-6 rounded-md border border-border bg-surface p-4 sm:grid-cols-[16rem_1fr] sm:p-6"
         aria-labelledby="ficha-intendente"
       >
         <Retrato
           src={intendente.foto}
           alt={`${intendente.cargo} ${intendente.nombre}`}
-          className="aspect-[4/5] w-full max-w-48 rounded-sm"
+          className="aspect-[4/5] w-full max-w-64 rounded-sm"
         />
         <div>
+          <span className="renewal-label mb-3 inline-block rounded-full px-3 py-1 text-xs font-semibold">
+            Renovación · Identidad · Servicio
+          </span>
           <p className="text-xs font-semibold uppercase tracking-[0.14em] text-muted-foreground">
             {intendente.cargo}
           </p>
@@ -113,7 +116,14 @@ export function Autoridades(): React.JSX.Element {
             className="mt-4 max-w-2xl text-base"
           />
           <p className="mt-3">
-            <EjemploBadge texto="Foto y reseña pendientes" />
+            <a
+              href="/fuentes"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-sm text-primary underline"
+            >
+              Consultar fuentes sobre la administración municipal
+            </a>
           </p>
         </div>
       </article>
@@ -124,8 +134,19 @@ export function Autoridades(): React.JSX.Element {
             <h3 className="font-serif text-2xl font-semibold">
               Junta Municipal
             </h3>
-            <EjemploBadge texto="Integración pendiente" />
+            <EjemploBadge texto="Integración vigente por confirmar" />
           </div>
+          <p className="mb-4 text-sm text-muted-foreground">
+            No se encontró una nómina oficial vigente en las fuentes
+            consultadas.{' '}
+            <a
+              className="text-primary underline"
+              href="https://www.municipios.gov.py/pirayu/junta-municipal/"
+            >
+              Consultar sección municipal
+            </a>
+            .
+          </p>
           <ul className="grid gap-3 sm:grid-cols-2">
             {juntaMunicipal.map((p) => (
               <FichaPersona key={p.nombre} p={p} />
@@ -135,10 +156,27 @@ export function Autoridades(): React.JSX.Element {
         <div>
           <div className="mb-4 flex flex-wrap items-center justify-between gap-2">
             <h3 className="font-serif text-2xl font-semibold">
-              Directores de Área
+              Unidad de Contratación
             </h3>
-            <EjemploBadge texto="Nombres pendientes" />
+            <EjemploBadge texto="Registro DNCP" />
           </div>
+          <p className="mb-4 text-sm">
+            Contacto UOC:{' '}
+            <a
+              className="text-primary underline"
+              href="mailto:uoc@pirayu.gov.py"
+            >
+              uoc@pirayu.gov.py
+            </a>{' '}
+            · 0519 20241.{' '}
+            <a
+              className="text-primary underline"
+              href="https://www.contrataciones.gov.py/convocantes/municipalidad-pirayu/responsables.html"
+            >
+              Fuente: DNCP
+            </a>
+            .
+          </p>
           <ul className="grid gap-3">
             {directores.map((p) => (
               <FichaPersona key={p.cargo} p={p} />

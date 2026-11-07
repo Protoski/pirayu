@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { modoDemostracion } from '@/content/sitio';
 import { DenunciaForm } from '@/components/site/denuncia-form';
 import { LegalPage } from '@/components/site/legal-page';
 
@@ -24,7 +25,17 @@ export default function Denuncias(): React.JSX.Element {
         el Ministerio Público.
       </p>
       <div className="not-prose rounded-md border border-border p-4 md:p-6">
-        <DenunciaForm />
+        {modoDemostracion ? (
+          <p>
+            El canal digital de denuncias está pendiente de habilitación
+            institucional. Esta demostración no recibe denuncias. Para consultar
+            el procedimiento oficial, comunicate con la Municipalidad al{' '}
+            <a href="tel:+59551920112">0519 20112</a>. No envíes información
+            sensible por formularios de prueba.
+          </p>
+        ) : (
+          <DenunciaForm />
+        )}
       </div>
     </LegalPage>
   );

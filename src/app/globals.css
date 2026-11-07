@@ -3,25 +3,19 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/*
- * Tokens de color. Contrastes medidos (WCAG 2.1, texto normal; AAA exige ≥ 7:1):
- *   foreground #0F172A / #FFFFFF  → 17.9:1
- *   primary    #002B49 / #FFFFFF  → 14.6:1
- *   muted      #3D4A5C / #FFFFFF  →  9.0:1 (7.7:1 sobre primary-soft)
- *   accent     #D91023 / #FFFFFF  →  5.2:1  → solo detalles decorativos o texto ≥ 18.66 px negrita (AAA grande ≥ 4.5:1)
- * Modo oscuro: foreground #E8EDF4 / #0B1220 → 15.9:1 · muted #A8B3C4 / #0B1220 → 8.8:1 · primary #9CC7EA / #0B1220 → 10.5:1
- */
+/* Paleta inspirada en el verde y dorado del escudo de Pirayú,
+ * rojo colorado como acento y fondos cálidos para una lectura serena. */
 :root {
-  --background: #ffffff;
-  --surface: #f5f6f8;
-  --foreground: #0f172a;
-  --muted-foreground: #3d4a5c;
-  --border: #dfe4ea;
-  --primary: #002b49;
+  --background: #fffdf8;
+  --surface: #f5f3eb;
+  --foreground: #172c25;
+  --muted-foreground: #4c5b53;
+  --border: #dddeda;
+  --primary: #18513b;
   --primary-foreground: #ffffff;
-  --primary-soft: #e6eef4;
-  --accent-red: #d91023;
-  --ring: #002b49;
+  --primary-soft: #eaf1e8;
+  --accent-red: #b32234;
+  --ring: #18513b;
   --success: #0d5c2e;
   --warning: #6b4100;
   --radius: 0.375rem;
@@ -29,16 +23,16 @@
 }
 
 .dark {
-  --background: #0b1220;
-  --surface: #111a2b;
+  --background: #101c18;
+  --surface: #182923;
   --foreground: #e8edf4;
   --muted-foreground: #a8b3c4;
-  --border: #23314a;
-  --primary: #9cc7ea;
-  --primary-foreground: #00182a;
-  --primary-soft: #13243a;
+  --border: #31443a;
+  --primary: #a2d2ad;
+  --primary-foreground: #10291d;
+  --primary-soft: #223c2c;
   --accent-red: #ff6b76;
-  --ring: #9cc7ea;
+  --ring: #a2d2ad;
   --success: #7ad9a1;
   --warning: #f2c26b;
   color-scheme: dark;
@@ -122,4 +116,28 @@ body {
 .leaflet-container {
   font-family: var(--font-sans);
   background: var(--surface);
+}
+
+/* Identidad municipal: rojo, verde y dorado en proporciones contenidas. */
+.civic-stripe {
+  height: 4px;
+  background: linear-gradient(
+    90deg,
+    #18513b 0%,
+    #18513b 45%,
+    #c6a04e 45%,
+    #c6a04e 60%,
+    #b32234 60%,
+    #b32234 100%
+  );
+}
+.renewal-label {
+  color: #922032;
+  border: 1px solid #d9b6b6;
+  background: #fff0ed;
+}
+.dark .renewal-label {
+  color: #ffb1b8;
+  border-color: #80505a;
+  background: #392128;
 }

@@ -59,6 +59,10 @@ export function Galeria(): React.JSX.Element {
                   compact
                 />
               )}
+              <span className="absolute inset-x-0 bottom-0 bg-black/65 px-3 py-2 text-left text-xs text-white">
+                {g.titulo}
+                {g.ia ? ' · Ilustración de IA' : ' · Fotografía municipal'}
+              </span>
             </button>
           </li>
         ))}
@@ -80,7 +84,10 @@ export function Galeria(): React.JSX.Element {
             <DialogTitle>{item.titulo}</DialogTitle>
             <DialogDescription>
               Imagen {(abierta ?? 0) + 1} de {galeria.length}. Usá las flechas
-              del teclado para navegar.
+              del teclado para navegar.{' '}
+              {item.ia
+                ? 'Ilustración generada con IA basada en referencias; puede diferir del lugar real.'
+                : 'Fotografía publicada por el municipio.'}
             </DialogDescription>
             <div className="relative mt-4 aspect-[3/2] w-full overflow-hidden rounded-sm">
               {item.src ? (

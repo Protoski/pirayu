@@ -13,7 +13,12 @@ import {
   CardFooter,
   CardHeader,
 } from '@/components/ui/card';
-import { tramites, type EstadoServicio, type Tramite } from '@/content/sitio';
+import {
+  modoDemostracion,
+  tramites,
+  type EstadoServicio,
+  type Tramite,
+} from '@/content/sitio';
 import { EjemploBadge } from './ejemplo-badge';
 import { SectionHeading } from './section-heading';
 import { TramiteAcciones } from './tramite-acciones';
@@ -49,15 +54,17 @@ export function VentanillaTramites(): React.JSX.Element {
           eyebrow="Ciudadano digital"
           title="Ventanilla Virtual de Trámites"
         >
-          Iniciá solicitudes, consultá el estado de tu expediente y pagá
-          tributos municipales. El pago en línea se habilitará cuando la
-          Municipalidad contrate una pasarela de cobro.
+          Conocé los servicios más consultados y explorá cómo funcionaría la
+          atención digital. Para una gestión válida, comunicate con la
+          Municipalidad.
         </SectionHeading>
 
         <ul className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {tramites.map((t) => {
             const Icon = ICONOS[t.id];
-            const s = SERVICIO[t.estadoServicio];
+            const s = modoDemostracion
+              ? { texto: 'Demostración', variant: 'default' as const }
+              : SERVICIO[t.estadoServicio];
             return (
               <li
                 key={t.id}

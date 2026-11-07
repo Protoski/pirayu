@@ -34,7 +34,7 @@ export function HeroMedia(): React.JSX.Element {
       else v.pause();
       return;
     }
-    if (!activo) return;
+    if (!activo || heroDiapositivas.length < 2) return;
     const t = window.setInterval(() => {
       setIndex((i) => (i + 1) % heroDiapositivas.length);
     }, INTERVALO_MS);
@@ -91,40 +91,48 @@ export function HeroMedia(): React.JSX.Element {
         </AnimatePresence>
       )}
 
-      <div className="absolute right-2 top-2 flex items-center gap-1 rounded-md bg-background/90 p-1">
-        {!heroVideo &&
-          heroDiapositivas.map((d, i) => (
-            <button
-              key={d.id}
-              type="button"
-              onClick={() => {
-                setIndex(i);
-              }}
-              aria-label={`Mostrar: ${d.titulo}`}
-              aria-current={i === index}
-              className="flex size-9 items-center justify-center"
-            >
-              <span
-                className={`block h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-primary' : 'w-1.5 bg-muted-foreground'}`}
-              />
-            </button>
-          ))}
-        <button
-          type="button"
-          onClick={() => {
-            setPlaying((p) => !p);
-          }}
-          aria-label={
-            activo ? 'Pausar presentación' : 'Reproducir presentación'
-          }
-          className="flex size-9 items-center justify-center rounded-sm hover:bg-surface"
-        >
-          {activo ? (
-            <Pause aria-hidden className="size-4" />
-          ) : (
-            <Play aria-hidden className="size-4" />
-          )}
-        </button>
+      {heroVideo !== null || heroDiapositivas.length > 1 ? (
+        <div className="absolute right-2 top-2 flex items-center gap-1 rounded-md bg-background/90 p-1">
+          {!heroVideo &&
+            heroDiapositivas.map((d, i) => (
+              <button
+                key={d.id}
+                type="button"
+                onClick={() => {
+                  setIndex(i);
+                }}
+                aria-label={`Mostrar: ${d.titulo}`}
+                aria-current={i === index}
+                className="flex size-9 items-center justify-center"
+              >
+                <span
+                  className={`block h-1.5 rounded-full transition-all ${i === index ? 'w-5 bg-primary' : 'w-1.5 bg-muted-foreground'}`}
+                />
+              </button>
+            ))}
+          <button
+            type="button"
+            onClick={() => {
+              setPlaying((p) => !p);
+            }}
+            aria-label={
+              activo ? 'Pausar presentación' : 'Reproducir presentación'
+            }
+            className="flex size-9 items-center justify-center rounded-sm hover:bg-surface"
+          >
+            {activo ? (
+              <Pause aria-hidden className="size-4" />
+            ) : (
+              <Play aria-hidden className="size-4" />
+            )}
+          </button>
+        </div>
+      ) : null}
+      <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 to-transparent px-5 pb-5 pt-12 text-white">
+        <p className="text-xs uppercase tracking-[0.15em]">Nuestra identidad</p>
+        <p className="mt-1 font-serif text-xl">
+          Historia que nos une. Una ciudad que se renueva.
+        </p>
       </div>
     </div>
   );

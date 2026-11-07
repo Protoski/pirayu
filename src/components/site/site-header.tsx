@@ -25,10 +25,11 @@ export function SiteHeader(): React.JSX.Element {
 
   return (
     <header className="sticky top-0 z-40 border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/85">
-      <div className="bg-[#002B49] text-white">
+      <div className="civic-stripe" aria-hidden />
+      <div className="bg-[#902334] text-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-1.5 text-xs">
           <p>
-            Sitio oficial
+            Portal ciudadano
             <span className="hidden sm:inline">
               {' '}
               · {institucion.departamento}, Paraguay
@@ -39,7 +40,7 @@ export function SiteHeader(): React.JSX.Element {
             className="inline-flex min-h-8 items-center gap-1.5 underline-offset-4 hover:underline"
           >
             <KeyRound aria-hidden className="size-3.5" />
-            <span className="hidden sm:inline">Ingresar a </span>Mi Carpeta
+            Mi Carpeta · Próximamente
           </Link>
         </div>
       </div>

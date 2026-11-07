@@ -1,4 +1,4 @@
-import { sanitize } from 'isomorphic-dompurify';
+import DOMPurify from 'isomorphic-dompurify';
 
 /**
  * Sanitización de fragmentos HTML (XSS). Solo se usa para contenido editorial con formato
@@ -8,7 +8,7 @@ import { sanitize } from 'isomorphic-dompurify';
 const ALLOWED_TAGS = ['p', 'strong', 'em', 'ul', 'ol', 'li', 'a', 'br'];
 
 export function sanitizeHtml(dirty: string): string {
-  return sanitize(dirty, {
+  return DOMPurify.sanitize(dirty, {
     ALLOWED_TAGS,
     ALLOWED_ATTR: ['href'],
     ALLOWED_URI_REGEXP: /^(?:https:|mailto:|tel:|\/)/i,

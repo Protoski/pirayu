@@ -51,11 +51,9 @@ async function send<T>(
     await getToken(true);
     return send<T>(url, body, json, false);
   }
-  const data = (await r
-    .json()
-    .catch(() => ({
-      error: 'Respuesta inválida del servidor.',
-    }))) as ApiResult<T>['data'];
+  const data = (await r.json().catch(() => ({
+    error: 'Respuesta inválida del servidor.',
+  }))) as ApiResult<T>['data'];
   return { ok: r.ok, status: r.status, data };
 }
 

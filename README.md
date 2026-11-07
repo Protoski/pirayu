@@ -1,3 +1,7 @@
+> **Versión de presentación actualizada (7 de noviembre de 2026).** Portal publicado en https://pirayu.vercel.app/ y resumen institucional en https://pirayu.vercel.app/presentacion. Ver [entrega y alcance](docs/ENTREGA-MUNICIPALIDAD.md).
+>
+> Por defecto, `NEXT_PUBLIC_MODO_DEMOSTRACION=true`: los recorridos de trámites y denuncias no reciben solicitudes oficiales en la interfaz. Se conservan las integraciones originales para una futura habilitación. El modo productivo requiere validación e integración municipal; no basta cambiar la variable. Las claves se administran en Vercel, sin guardarlas en Git.
+
 # Portal web · Municipalidad de Pirayú
 
 Portal institucional (ventanilla única virtual) de la Municipalidad de Pirayú, Departamento de Paraguarí, Paraguay.

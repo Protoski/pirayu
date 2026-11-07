@@ -19,6 +19,14 @@ export function Turismo(): React.JSX.Element {
           Patrimonio ferroviario, historia de la Guerra de la Triple Alianza,
           ñandutí, calzados de cuero y cocina local.
         </SectionHeading>
+        <p className="mb-6 text-sm">
+          Reseñas basadas en SENATUR y la Secretaría Nacional de Cultura. Las
+          ubicaciones del mapa son ilustrativas.{' '}
+          <a className="text-primary underline" href="/fuentes">
+            Consultar fuentes oficiales
+          </a>
+          .
+        </p>
         <TurismoExplorer />
         <h3 className="mb-4 mt-12 font-serif text-2xl font-semibold">
           Galería

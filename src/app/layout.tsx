@@ -10,13 +10,30 @@ import { institucion, modoDemostracion } from '@/content/sitio';
 
 export const metadata: Metadata = {
   title: {
-    default: `${institucion.nombre} · Portal oficial`,
+    default: `${institucion.nombre} · Propuesta de portal ciudadano`,
     template: `%s · ${institucion.nombre}`,
   },
   description:
     'Ventanilla única virtual: trámites, transparencia activa (Ley 5282/2014), autoridades y turismo de Pirayú, Paraguarí.',
   // Mientras sea demostración, no indexar en buscadores.
   robots: { index: !modoDemostracion, follow: !modoDemostracion },
+  metadataBase: new URL('https://pirayu.vercel.app'),
+  openGraph: {
+    title: 'Pirayú · Renovación y servicio a la ciudadanía',
+    description:
+      'Información municipal, patrimonio y canales de atención. Propuesta de portal ciudadano.',
+    locale: 'es_PY',
+    type: 'website',
+    images: [
+      {
+        url: '/media/oficial/estacion.jpg',
+        width: 1200,
+        height: 800,
+        alt: 'Estación ferroviaria de Pirayú',
+      },
+    ],
+  },
+  icons: { icon: '/media/oficial/logo.png', apple: '/media/oficial/logo.png' },
   formatDetection: { telephone: false },
 };
 
@@ -24,8 +41,8 @@ export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
   themeColor: [
-    { media: '(prefers-color-scheme: light)', color: '#002B49' },
-    { media: '(prefers-color-scheme: dark)', color: '#0B1220' },
+    { media: '(prefers-color-scheme: light)', color: '#18513b' },
+    { media: '(prefers-color-scheme: dark)', color: '#101c18' },
   ],
 };
 
@@ -58,14 +75,13 @@ export default async function RootLayout({
           >
             Saltar al contenido principal
           </a>
-          {/* eslint-disable-next-line @typescript-eslint/no-unnecessary-condition -- bandera editable en sitio.ts */}
           {modoDemostracion ? (
             <div
               role="note"
               className="border-b border-warning/40 bg-[#fff7e6] px-4 py-2 text-center text-sm text-[#5c3800] dark:bg-[#2a1f08] dark:text-[#f2c26b]"
             >
-              Versión de demostración: los nombres, cifras, contactos e imágenes
-              marcados como «ejemplo» o «pendiente» no son datos oficiales.
+              Propuesta para la Municipalidad · Trámites en demostración. Los
+              canales oficiales de contacto están disponibles.
             </div>
           ) : null}
           <SiteHeader />
