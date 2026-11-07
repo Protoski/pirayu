@@ -6,7 +6,7 @@ Fuentes verificadas (clonadas el 2026-11-07):
 - vercel/style-guide @ b56b657 — configs ESLint/Prettier/TypeScript (repositorio archivado)
 
 ## Skills del proyecto
-Las skills viven en `.claude/skills/` y Claude Code las carga solas al arrancar en la raíz del repo.
+Las skills viven en `.claude/skills/` y Claude Code las carga solas al arrancar en la raíz del repo. Dependencias: `bash scripts/setup.sh` (usar `.venv/bin/python` para los scripts Python).
 - `webapp-testing`: pruebas de la app web local con Playwright (Python). Ejecutar `scripts/with_server.py --help` antes de usarlo; esperar `networkidle` antes de inspeccionar el DOM.
 - `frontend-visual-qa`: auditoría visual de UI ya renderizada (tipografía, overflow, responsive, rutas, gráficos). Por defecto solo audita; no edita código ni instala dependencias salvo que se pida.
 

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pirayu demo</title>
+  <style>
+    body { margin: 0; font-family: system-ui, sans-serif; background: #f6f5f1; color: #1d1d1b; }
+    header, main { max-width: 960px; margin: 0 auto; padding: 24px 16px; }
+    h1 { font-size: 2rem; margin: 0 0 8px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; }
+    .card { background: #fff; border: 1px solid #d9d6cc; padding: 16px; }
+    button { padding: 8px 14px; border: 1px solid #1d1d1b; background: #fff; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Pirayu</h1>
+    <p>Página de prueba para las skills webapp-testing y frontend-visual-qa.</p>
+  </header>
+  <main>
+    <div class="grid">
+      <section class="card"><h2>Contador</h2><p id="count">0</p><button id="inc">Sumar</button></section>
+      <section class="card"><h2>Estado</h2><p>Sin datos reales.</p></section>
+    </div>
+  </main>
+  <script>
+    let n = 0;
+    document.getElementById('inc').addEventListener('click', () => {
+      document.getElementById('count').textContent = String(++n);
+    });
+  </script>
+</body>
+</html>

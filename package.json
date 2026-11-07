@@ -1,0 +1,16 @@
+{
+  "name": "pirayu",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "setup": "bash scripts/setup.sh",
+    "demo": "python3 -m http.server 5173 --directory demo",
+    "qa:demo": "node .claude/skills/frontend-visual-qa/scripts/visual_layout_audit.mjs --file demo/index.html --out .qa/demo"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
