@@ -73,17 +73,17 @@ export function TurismoExplorer(): React.JSX.Element {
                 <div className="relative aspect-[3/2] overflow-hidden rounded-sm">
                   <Image
                     src={sitio.foto}
-                    alt={`${sitio.ia ? 'Ilustración de IA: ' : ''}${sitio.nombre}`}
+                    alt={sitio.nombre}
                     fill
                     sizes="(min-width: 1024px) 60vw, 100vw"
                     className="object-cover"
                   />
                 </div>
-                <figcaption className="mt-2 text-xs text-muted-foreground">
-                  {sitio.ia
-                    ? 'Ilustración generada con IA · basada en referencias visuales, no es una fotografía documental.'
-                    : 'Fotografía del portal municipal.'}
-                </figcaption>
+                {!sitio.ia ? (
+                  <figcaption className="mt-2 text-xs text-muted-foreground">
+                    Fotografía del portal municipal.
+                  </figcaption>
+                ) : null}
               </figure>
             ) : null}
             <p className="font-semibold">{sitio.nombre}</p>

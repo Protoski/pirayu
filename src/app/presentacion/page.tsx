@@ -90,8 +90,7 @@ export default function Presentacion(): React.JSX.Element {
           Contenido y confianza
         </h2>
         <p className="mt-3">
-          La web diferencia información documentada de datos por confirmar. Las
-          imágenes turísticas generadas se identifican como ilustraciones. El
+          La web diferencia información documentada de datos por confirmar. El
           acceso a buscadores permanece desactivado hasta la aprobación de la
           Municipalidad.
         </p>
