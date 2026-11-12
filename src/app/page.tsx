@@ -1,5 +1,6 @@
 import { AccesosUtiles } from '@/components/site/accesos-utiles';
 import { Autoridades } from '@/components/site/autoridades';
+import { Camaras } from '@/components/site/camaras';
 import { Hero } from '@/components/site/hero';
 import { Transparencia } from '@/components/site/transparencia';
 import { Turismo } from '@/components/site/turismo';
@@ -13,6 +14,7 @@ export default function Home(): React.JSX.Element {
       <VentanillaTramites />
       <Autoridades />
       <Transparencia />
+      <Camaras />
       <Turismo />
     </>
   );

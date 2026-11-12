@@ -31,6 +31,10 @@ npm run dev                     # http://localhost:3000
 
 En producción (`npm start`) son **obligatorias** `CSRF_SECRET` y `DATA_ENCRYPTION_KEY` (ver `.env.example`); sin ellas los formularios responden error (fail-closed).
 
+### Cámaras públicas
+
+La sección de cámaras comienza sin señales configuradas. Para habilitar una, agregar a `camarasPublicas` en `src/content/sitio.ts` su `id`, `nombre`, `ubicacion` y `url` HTTPS pública, autorizada y reproducible directamente por el navegador. No incluir usuarios, contraseñas ni direcciones privadas de las cámaras. La política de seguridad permite únicamente los orígenes HTTPS configurados en esa lista. El reproductor nativo requiere un formato compatible con el navegador; las señales RTSP o un servicio que requiera autenticación o un reproductor específico necesitan una integración adicional. Comprobar la disponibilidad y las autorizaciones antes de publicar cada señal.
+
 ## Estructura
 
 ```

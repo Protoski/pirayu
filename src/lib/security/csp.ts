@@ -9,7 +9,19 @@
  * - img-src incluye tile.openstreetmap.org (teselas del mapa interactivo).
  * - frame-ancestors 'none' equivale a X-Frame-Options: DENY.
  */
+import { camarasPublicas } from '@/content/sitio';
+
 export function buildCsp(nonce: string, isDev: boolean): string {
+  const cameraOrigins = camarasPublicas.flatMap((camara) => {
+    try {
+      const url = new URL(camara.url);
+      return url.protocol === 'https:' && !url.username && !url.password
+        ? [url.origin]
+        : [];
+    } catch {
+      return [];
+    }
+  });
   const directives: Record<string, string[]> = {
     'default-src': ["'self'"],
     'script-src': [
@@ -22,7 +34,7 @@ export function buildCsp(nonce: string, isDev: boolean): string {
     'img-src': ["'self'", 'data:', 'blob:', 'https://tile.openstreetmap.org'],
     'font-src': ["'self'"],
     'connect-src': ["'self'", ...(isDev ? ['ws:'] : [])],
-    'media-src': ["'self'"],
+    'media-src': ["'self'", ...new Set(cameraOrigins)],
     'object-src': ["'none'"],
     'base-uri': ["'self'"],
     'form-action': ["'self'"],

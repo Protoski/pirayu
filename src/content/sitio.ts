@@ -202,6 +202,18 @@ export const tramites: Tramite[] = [
 
 export const sugerenciasBusqueda = ['Registro', 'Inmobiliario', 'Habilitación'];
 
+/** Solo transmisiones públicas autorizadas, accesibles por HTTPS y reproducibles
+ * directamente por el navegador (por ejemplo, MP4). No incluir credenciales ni
+ * direcciones privadas de cámaras. La lista vacía indica que aún no hay señales. */
+export interface CamaraPublica {
+  id: string;
+  nombre: string;
+  ubicacion: string;
+  url: string;
+}
+
+export const camarasPublicas: CamaraPublica[] = [];
+
 /**
  * Datasets de Transparencia Activa (Ley N° 5282/2014; remuneraciones: Ley N° 5189/2014).
  * `filas` contiene DATOS DE EJEMPLO para demostrar el formato abierto CSV. Reemplazar por
@@ -490,6 +502,7 @@ export const navegacion = [
   { href: '/#autoridades', label: 'Autoridades' },
   { href: '/#tramites', label: 'Trámites Virtuales' },
   { href: '/#transparencia', label: 'Transparencia' },
+  { href: '/#camaras', label: 'Cámaras' },
   { href: '/#turismo', label: 'Turismo' },
   { href: '/#contacto', label: 'Contacto' },
 ] as const;
